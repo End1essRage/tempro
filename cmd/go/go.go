@@ -28,7 +28,7 @@ var GoCmd = &cobra.Command{
 		// runs go mod init
 
 		if err := generator.GenerateFiles(generator.GolangSimple, generator.ProjectConfig{ModuleName: Name}); err != nil {
-			return fmt.Errorf("error generating file : " + err.Error())
+			return fmt.Errorf("%s", "error generating file : "+err.Error())
 		}
 
 		return nil
