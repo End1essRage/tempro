@@ -4,6 +4,6 @@ type Client struct {
 	url string
 }
 
-func NewClient() *Client {
-	return &Client{}
+func NewClient(url string) *Client {
+	return &Client{url: url}
 }

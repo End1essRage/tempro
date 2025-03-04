@@ -3,6 +3,7 @@ package factory
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -62,6 +63,8 @@ func loadConfig() (*Config, error) {
 		return nil, err
 	}
 
+	fmt.Printf("cfg path is %s \n", path)
+
 	// Создаем директорию если нужно
 	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
 		return nil, err
@@ -116,8 +119,13 @@ func defaultConfig() *Config {
 }
 
 // Init инициализирует фабрику (должна вызываться один раз при старте приложения)
-func Init(cfg *Config) error {
+func Init() error {
 	var initErr error
+	cfg, err := loadConfig()
+	if err != nil {
+		return err
+	}
+
 	once.Do(func() {
 		if cfg == nil {
 			initErr = errors.New("config cannot be nil")
