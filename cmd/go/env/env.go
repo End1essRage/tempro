@@ -1,4 +1,4 @@
-package cmd_go_env
+package cmd_go
 
 import (
 	"fmt"

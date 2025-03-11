@@ -8,10 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	Name string
-)
-
 // goCmd represents the go command
 var GoCmd = &cobra.Command{
 	Use:   "go",
